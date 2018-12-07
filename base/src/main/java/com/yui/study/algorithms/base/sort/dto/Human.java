@@ -21,7 +21,7 @@ public class Human implements Comparable<Human> {
         this.age = age;
         this.name = name;
     }
-
+    @Override
     public int compareTo(Human o) {
         if (this.age == o.age){
             return 0;
