@@ -1,36 +1,45 @@
 package com.yui.study.algorithms.base.sort;
 
-import com.alibaba.fastjson.JSON;
-import com.yui.study.algorithms.base.sort.dto.Human;
+import com.yui.study.algorithms.base.util.DataUtil;
+import com.yui.study.algorithms.base.util.StdDrawUtil;
+import edu.princeton.cs.algs4.StdDraw;
+
+import java.util.Arrays;
 
 /**
- * 选择排序
- *
  * @author XuZhuohao
- * @date 2018/12/5
+ * @date 2021/3/11
  */
-public class SelectionSort {
-    public static Comparable[] sort(Comparable[] datas){
-        for (int i = 0; i < datas.length; i++) {
-            int largerIndex = i;
-            Comparable temp;
-            for (int j = i; j < datas.length; j++){
-                if (datas[largerIndex].compareTo(datas[j]) == -1){
-                    largerIndex = j;
+public class SelectionSort implements ISort {
+    @Override
+    public <T extends Comparable<? super T>> void sort(T[] data) {
+        for (int i = 0; i < data.length; i++) {
+            // -1 < 0 = 1 >
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[i].compareTo(data[j]) > 0) {
+                    DataUtil.swap(data, i, j);
                 }
             }
-            temp = datas[i];
-            datas[i] = datas[largerIndex];
-            datas[largerIndex] = temp;
         }
-        return datas;
+    }
+
+    @Override
+    public void sort(Integer[] data) {
+        for (int i = 0; i < data.length; i++) {
+            // -1 < 0 = 1 >
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[i].compareTo(data[j]) > 0) {
+                    DataUtil.swap(data, i, j);
+                    StdDrawUtil.drawHistogram(data);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
-        Human[] humans = {new Human(12,"t1"), new Human(7,"t2"),
-                new Human(14,"t3"),new Human(3,"t4"),
-                new Human(12,"t5")};
-        System.out.println(JSON.toJSONString(humans));
-        System.out.println(JSON.toJSONString(SelectionSort.sort(humans)));
+        Integer[] arrays = new Integer[]{3,2,9,7,8,6,1,5,0,4};
+        ISort iSort = new SelectionSort();
+        iSort.sort(arrays);
+        System.out.println(Arrays.toString(arrays));
     }
 }
