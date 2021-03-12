@@ -22,7 +22,7 @@ public class InsertionSort implements ISort {
     }
 
     @Override
-    public void sort(Integer[] data) {
+    public void sort2(Integer[] data) {
         for (int i = 1; i < data.length; i++) {
             for (int j = i; j > 0 && data[j].compareTo(data[j - 1]) < 0; j--) {
                 DataUtil.swap(data, j, j - 1);

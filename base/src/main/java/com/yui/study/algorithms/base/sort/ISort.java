@@ -14,5 +14,5 @@ public interface ISort {
      */
     <T extends Comparable<? super T>> void sort(T[] data);
 
-    void sort(Integer[] data);
+    void sort2(Integer[] data);
 }

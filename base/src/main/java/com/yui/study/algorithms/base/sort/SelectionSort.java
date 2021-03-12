@@ -24,7 +24,7 @@ public class SelectionSort implements ISort {
     }
 
     @Override
-    public void sort(Integer[] data) {
+    public void sort2(Integer[] data) {
         for (int i = 0; i < data.length; i++) {
             // -1 < 0 = 1 >
             for (int j = i + 1; j < data.length; j++) {
