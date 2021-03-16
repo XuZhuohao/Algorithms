@@ -14,5 +14,7 @@ public interface ISort {
      */
     <T extends Comparable<? super T>> void sort(T[] data);
 
-    void sort2(Integer[] data);
+    default void sort2(Integer[] data){
+        System.out.println("undefined");
+    }
 }
